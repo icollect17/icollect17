@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>iCollect's Exhibition</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,700;1,500&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--red:#c8102e;--oxblood:#5a0a16;--wall:#120d0e;--brass:#d9a93a;--bone:#efe6d6;--mut:#a89c8a;--mx:50%;--my:0%}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:15px/1.65 Manrope,system-ui,sans-serif;color:var(--bone);min-height:100vh;
+ background:radial-gradient(circle 420px at var(--mx) var(--my),rgba(255,214,140,.10),transparent 70%),
+ linear-gradient(180deg,#1a0a0d 0,var(--wall) 420px);background-attachment:fixed}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 5vw;background:rgba(18,13,14,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--oxblood)}
+.logo{font:700 24px 'Bodoni Moda',serif;text-decoration:none;letter-spacing:.02em}
+.logo b{color:var(--red)}
+.hd{display:flex;align-items:center;gap:6px}
+.hd button,.hd a{background:none;border:1px solid transparent;color:var(--mut);font:600 13px Manrope,sans-serif;padding:6px 9px;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center}
+.hd button.on{color:var(--bone);border-color:var(--brass)}
+.hd button:hover,.hd a:hover{color:var(--brass)}
+.hd svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8}
+.sep{width:1px;height:20px;background:var(--oxblood);margin:0 6px}
+main{padding:0 5vw 60px;max-width:1500px;margin:auto}
+.hero{padding:9vh 0 5vh;max-width:760px}
+.hero h1{font:700 clamp(40px,8vw,88px)/1 'Bodoni Moda',serif;animation:rise 1.1s cubic-bezier(.2,.7,.2,1) both}
+.hero p{font:italic 500 clamp(17px,2.2vw,22px)/1.5 'Bodoni Moda',serif;color:var(--mut);margin-top:16px;animation:rise 1.1s .25s cubic-bezier(.2,.7,.2,1) both}
+.stripe{height:3px;margin-top:28px;background:linear-gradient(90deg,var(--red) 0 50%,var(--brass) 50%);transform-origin:left;animation:grow 1.4s .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+@keyframes grow{from{transform:scaleX(0)}}
+.banner{margin:18px 0 0;padding:10px 14px;border-left:3px solid var(--brass);background:rgba(217,169,58,.08);color:var(--brass);font-size:13px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:22px 0 8px}
+.bar input,.bar select{background:#1b1214;color:var(--bone);border:1px solid #3a2a2e;border-radius:6px;padding:10px 12px;font:inherit;min-width:0}
+.bar input{flex:1 1 240px}
+.chip{background:none;color:var(--mut);border:1px solid #3a2a2e;border-radius:99px;padding:8px 16px;font:600 13px Manrope,sans-serif;cursor:pointer}
+.chip.on{background:var(--red);border-color:var(--red);color:#fff}
+.cnt{color:var(--mut);font-size:13px;margin:6px 0 24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:44px 30px}
+.card{text-decoration:none;display:block}
+.art{aspect-ratio:5/7;overflow:hidden;border-radius:6px;border:6px solid #2a1c1f;outline:1px solid var(--brass);outline-offset:-3px;background:#000;
+ box-shadow:0 26px 40px -12px rgba(0,0,0,.85);transform:perspective(700px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .18s,box-shadow .3s}
+.card:hover .art{box-shadow:0 30px 50px -10px rgba(200,16,46,.45)}
+.art img{width:100%;height:100%;object-fit:cover;display:block}
+.plaque{margin:16px auto 0;width:88%;padding:9px 12px;background:linear-gradient(135deg,#e6c06a,#b98a25);color:#241705;border-radius:2px;box-shadow:0 2px 0 #7a5a14}
+.plaque b{display:block;font:700 15px 'Bodoni Moda',serif;line-height:1.25}
+.plaque span,.plaque small{display:block;font-size:12px;line-height:1.4}
+.none{grid-column:1/-1;color:var(--mut);padding:40px 0}
+.detail{display:grid;grid-template-columns:minmax(260px,430px) 1fr;gap:6vw;padding:5vh 0;align-items:start}
+.stage{perspective:1400px}
+.flip{position:relative;aspect-ratio:5/7;transform-style:preserve-3d;transition:transform .9s cubic-bezier(.3,.7,.2,1);cursor:zoom-in}
+.flip.b{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;backface-visibility:hidden;border-radius:6px;border:8px solid #2a1c1f;box-shadow:0 30px 60px -10px rgba(0,0,0,.9),0 0 80px rgba(200,16,46,.25)}
+.face.bk{transform:rotateY(180deg)}
+.ctl{display:flex;gap:10px;margin-top:22px}
+.ctl button,.pn a{background:none;color:var(--bone);border:1px solid var(--brass);padding:9px 16px;border-radius:6px;font:600 13px Manrope,sans-serif;cursor:pointer;text-decoration:none}
+.ctl button:hover,.pn a:hover{background:var(--brass);color:#241705}
+.back{color:var(--mut);text-decoration:none;font-size:14px}
+.back:hover{color:var(--brass)}
+.info h1{font:700 clamp(32px,5vw,58px)/1.05 'Bodoni Moda',serif;margin-top:18px}
+.info h2{font:italic 500 clamp(18px,2.4vw,26px) 'Bodoni Moda',serif;color:var(--brass);margin-top:8px}
+dl{display:grid;grid-template-columns:auto 1fr;gap:10px 28px;margin:30px 0;padding:22px 0;border-block:1px solid var(--oxblood);max-width:460px}
+dt{color:var(--mut)}dd{font-weight:600}
+.note{max-width:56ch;font:italic 500 17px/1.6 'Bodoni Moda',serif;color:var(--bone)}
+.pn{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+footer{padding:36px 5vw;border-top:1px solid var(--oxblood);color:var(--mut);display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;justify-content:space-between}
+footer .ig{display:flex;gap:18px;flex-wrap:wrap}
+footer a{color:var(--bone);text-decoration:none;border-bottom:1px solid var(--brass)}
+#lb{position:fixed;inset:0;z-index:50;background:rgba(5,2,3,.95);display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px}
+#lb.on{display:flex}
+#lb img{max-height:82vh;max-width:94vw;border-radius:6px;box-shadow:0 0 90px rgba(200,16,46,.35)}
+.lbc{display:flex;gap:10px}
+.lbc button{background:#1b1214;color:var(--bone);border:1px solid var(--brass);padding:9px 16px;border-radius:6px;font:600 13px Manrope,sans-serif;cursor:pointer}
+.lbc button.on{background:var(--brass);color:#241705}
+@media(max-width:760px){.detail{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr);gap:34px 14px}.sep{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+ <a class="logo" href="#/">iCollect<b>17</b></a>
+ <div class="hd" id="hd"></div>
+</header>
+<main id="app"></main>
+<footer id="ft"></footer>
+<div id="lb" role="dialog" aria-modal="true"><img id="lbi" alt=""><div class="lbc" id="lbc"></div></div>
+
+<script>
+/* ===== CẤU HÌNH (chỉ sửa phần này) ===== */
+const CONFIG={
+  SHEET_ID:'',            // dán ID Google Sheet vào đây (chuỗi giữa /d/ và /edit trên URL)
+  SHEET_NAME:'Sheet1',    // tên tab chứa dữ liệu
+  IMG_BASE:'img/',        // thư mục ảnh trong repo; trong Sheet chỉ cần ghi tên file (vd: kdb-01-front.jpg)
+  IG:[
+    {name:'Instagram 1',url:'https://instagram.com/ten_tai_khoan_1'},
+    {name:'Instagram 2',url:'https://instagram.com/ten_tai_khoan_2'}
+  ]
+};
+
+/* ===== ĐA NGÔN NGỮ ===== */
+const T={
+vi:{h1:'iCollect17',sub:'Bộ sưu tập thẻ cầu thủ của riêng tôi, mỗi tấm thẻ là một khoảnh khắc được giữ lại.',search:'Tìm cầu thủ, tên thẻ, mùa giải…',all:'Tất cả',Club:'CLB',NT:'Đội tuyển QG',player:'Cầu thủ',season:'Mùa giải',rarity:'Độ hiếm',team:'Đội / CLB',type:'Loại',count:'Đang hiển thị {n} trong {m} thẻ',none:'Không có thẻ nào khớp. Hãy thử bỏ bớt bộ lọc.',flip:'Lật thẻ',zoom:'Phóng to',back:'Quay lại triển lãm',front:'Mặt trước',bk:'Mặt sau',contact:'Liên hệ',sample:'Đang hiển thị dữ liệu mẫu. Điền SHEET_ID trong CONFIG để dùng dữ liệu thật.',close:'Đóng'},
+en:{h1:'iCollect17',sub:'My personal collection of player cards, each one a moment kept.',search:'Search player, card, season…',all:'All',Club:'Club',NT:'National team',player:'Player',season:'Season',rarity:'Rarity',team:'Team',type:'Type',count:'Showing {n} of {m} cards',none:'No cards match. Try removing a filter.',flip:'Flip card',zoom:'Zoom in',back:'Back to the exhibition',front:'Front',bk:'Back',contact:'Contact',sample:'Showing sample data. Set SHEET_ID in CONFIG to load your real collection.',close:'Close'},
+de:{h1:'iCollect17',sub:'Meine persönliche Sammlung von Spielerkarten, jede Karte ein festgehaltener Moment.',search:'Spieler, Karte, Saison suchen…',all:'Alle',Club:'Verein',NT:'Nationalmannschaft',player:'Spieler',season:'Saison',rarity:'Seltenheit',team:'Team',type:'Art',count:'{n} von {m} Karten',none:'Keine passende Karte gefunden. Entferne einen Filter.',flip:'Karte drehen',zoom:'Vergrößern',back:'Zurück zur Ausstellung',front:'Vorderseite',bk:'Rückseite',contact:'Kontakt',sample:'Beispieldaten werden angezeigt. Trage SHEET_ID in CONFIG ein, um die echte Sammlung zu laden.',close:'Schließen'}
+};
+let L='vi',D=[],sample=false,F={q:'',type:'',player:'',season:'',rarity:''};
+try{L=localStorage.getItem('lang')||'vi'}catch(e){}
+const t=k=>(T[L]||T.vi)[k]||k;
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fold=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').toLowerCase();
+
+/* ===== ẢNH TẠM & DỮ LIỆU MẪU ===== */
+const ph=(a,b)=>'data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 700"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c8102e"/><stop offset="1" stop-color="#14080a"/></linearGradient></defs><rect width="500" height="700" fill="url(#g)"/><rect x="26" y="26" width="448" height="648" fill="none" stroke="#d9a93a" stroke-width="3"/><text x="250" y="335" fill="#efe6d6" font-family="Georgia,serif" font-size="34" text-anchor="middle">${esc(a)}</text><text x="250" y="385" fill="#d9a93a" font-family="sans-serif" font-size="22" text-anchor="middle">${esc(b)}</text></svg>`);
+const SAMPLE=()=>[
+ ['1','Kevin De Bruyne','Mẫu Base','2023/24','Manchester City','CLB','Common'],
+ ['2','Kevin De Bruyne','Mẫu Auto','2022','Belgium','NT','Rare'],
+ ['3','Kevin De Bruyne','Mẫu Numbered','2021/22','Manchester City','CLB','Legendary'],
+ ['4','Pau Cubarsí','Mẫu Base','2023/24','FC Barcelona','CLB','Common'],
+ ['5','Pau Cubarsí','Mẫu Rookie','2024','Spain','NT','Rare'],
+ ['6','Pau Cubarsí','Mẫu Auto','2024/25','FC Barcelona','CLB','Legendary']
+].map(r=>norm({id:r[0],player:r[1],card:r[2],season:r[3],team:r[4],type:r[5],rarity:r[6],note:'Dữ liệu mẫu để xem thử giao diện.'},0,true));
+
+function norm(o,i,smp){
+ const img=(v,side)=>!v?ph(o.player+' '+o.card,side):(/^(https?:|data:)/.test(v)?v:CONFIG.IMG_BASE+v);
+ const ty=/^(nt|qg|n)/i.test(o.type||'')||/national|đội tuyển|doi tuyen/i.test(o.type||'')?'NT':'Club';
+ return{id:String(o.id||i+1),player:o.player||'',card:o.card||'',season:o.season||'',team:o.team||'',type:ty,rarity:o.rarity||'',note:o.note||'',
+  front:img(o.front,'Front'),back:img(o.back,'Back')};
+}
+
+/* ===== ĐỌC GOOGLE SHEETS ===== */
+function csv(s){const r=[];let row=[],c='',q=false;for(let i=0;i<s.length;i++){const h=s[i];
+ if(q){if(h=='"'){if(s[i+1]=='"'){c+='"';i++}else q=false}else c+=h}
+ else if(h=='"')q=true;else if(h==','){row.push(c);c=''}
+ else if(h=='\n'){row.push(c);r.push(row);row=[];c=''}else if(h!='\r')c+=h}
+ if(c||row.length){row.push(c);r.push(row)}return r}
+async function load(){
+ if(!CONFIG.SHEET_ID){D=SAMPLE();sample=true;return}
+ try{
+  const u=`https://docs.google.com/spreadsheets/d/${CONFIG.SHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(CONFIG.SHEET_NAME)}`;
+  const rows=csv(await (await fetch(u)).text());
+  const h=rows.shift().map(x=>x.trim().toLowerCase());
+  D=rows.filter(r=>r.some(v=>v.trim())).map((r,i)=>{const o={};h.forEach((k,j)=>o[k]=(r[j]||'').trim());return norm(o,i)});
+  if(!D.length)throw 0;
+ }catch(e){D=SAMPLE();sample=true}
+}
+
+/* ===== KHUNG TRANG ===== */
+const igSvg='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".8" fill="currentColor"/></svg>';
+function chrome(){
+ $('#hd').innerHTML=['vi','en','de'].map(l=>`<button data-l="${l}" class="${L==l?'on':''}" aria-label="${l}">${l.toUpperCase()}</button>`).join('')+'<span class="sep"></span>'+CONFIG.IG.map(g=>`<a href="${esc(g.url)}" target="_blank" rel="noopener" aria-label="${esc(g.name)}" title="${esc(g.name)}">${igSvg}</a>`).join('');
+ $('#ft').innerHTML=`<span>© iCollect17</span><div class="ig"><span>${t('contact')}:</span>${CONFIG.IG.map(g=>`<a href="${esc(g.url)}" target="_blank" rel="noopener">${esc(g.name)}</a>`).join('')}</div>`;
+ document.documentElement.lang=L;
+}
+$('#hd').onclick=e=>{const b=e.target.closest('button[data-l]');if(!b)return;L=b.dataset.l;try{localStorage.setItem('lang',L)}catch(x){}chrome();route()};
+
+/* ===== TRANG CHỦ ===== */
+function home(){
+ document.title="iCollect's Exhibition";
+ const u=k=>[...new Set(D.map(c=>c[k]))].filter(Boolean).sort();
+ const sel=(k)=>`<select data-k="${k}" aria-label="${t(k)}"><option value="">${t(k)}</option>${u(k).map(v=>`<option${F[k]==v?' selected':''}>${esc(v)}</option>`).join('')}</select>`;
+ $('#app').innerHTML=`<section class="hero"><h1>${t('h1')}</h1><p>${t('sub')}</p><div class="stripe"></div>${sample?`<p class="banner">${t('sample')}</p>`:''}</section>
+ <div class="bar"><input id="q" type="search" placeholder="${t('search')}" value="${esc(F.q)}" aria-label="${t('search')}">
+ <div>${['','Club','NT'].map(v=>`<button class="chip${F.type==v?' on':''}" data-t="${v}">${t(v||'all')}</button>`).join(' ')}</div>
+ ${sel('player')}${sel('season')}${sel('rarity')}</div><p id="cnt" class="cnt"></p><div id="grid" class="grid"></div>`;
+ $('#q').oninput=e=>{F.q=e.target.value;grid()};
+ document.querySelectorAll('.bar select').forEach(s=>s.onchange=e=>{F[s.dataset.k]=e.target.value;grid()});
+ document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{F.type=b.dataset.t;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x==b));grid()});
+ const g=$('#grid');
+ g.onmousemove=e=>{const a=e.target.closest('.card');if(!a)return;const b=a.querySelector('.art').getBoundingClientRect();
+  a.style.setProperty('--ry',((e.clientX-b.left)/b.width-.5)*14+'deg');a.style.setProperty('--rx',-((e.clientY-b.top)/b.height-.5)*14+'deg')};
+ g.onmouseout=e=>{const a=e.target.closest('.card');if(a&&!a.contains(e.relatedTarget)){a.style.setProperty('--rx','0deg');a.style.setProperty('--ry','0deg')}};
+ grid();
+}
+function grid(){
+ const q=fold(F.q);
+ const r=D.filter(c=>(!F.type||c.type==F.type)&&(!F.player||c.player==F.player)&&(!F.season||c.season==F.season)&&(!F.rarity||c.rarity==F.rarity)&&(!q||fold([c.player,c.card,c.season,c.team,c.rarity].join(' ')).includes(q)));
+ $('#cnt').textContent=t('count').replace('{n}',r.length).replace('{m}',D.length);
+ $('#grid').innerHTML=r.length?r.map(c=>`<a class="card" href="#/card/${encodeURIComponent(c.id)}"><div class="art"><img loading="lazy" src="${c.front}" alt="${esc(c.player)}: ${esc(c.card)}"></div><div class="plaque"><b>${esc(c.player)}</b><span>${esc(c.card)}</span><small>${esc(c.season)}</small><small>${esc(c.team)}</small></div></a>`).join(''):`<p class="none">${t('none')}</p>`;
+}
+
+/* ===== TRANG CHI TIẾT ===== */
+function detail(id){
+ const i=D.findIndex(c=>c.id==id);if(i<0){location.hash='#/';return}
+ const c=D[i],p=D[(i-1+D.length)%D.length],n=D[(i+1)%D.length],lk=x=>'#/card/'+encodeURIComponent(x.id);
+ document.title=`${c.player}: ${c.card} - iCollect's Exhibition`;
+ $('#app').innerHTML=`<section class="detail"><div class="stage"><div class="flip" id="flip" tabindex="0" role="button" aria-label="${t('zoom')}"><img class="face" src="${c.front}" alt="${t('front')}"><img class="face bk" src="${c.back}" alt="${t('bk')}"></div>
+ <div class="ctl"><button id="fl">${t('flip')}</button><button id="zm">${t('zoom')}</button></div></div>
+ <div class="info"><a class="back" href="#/">← ${t('back')}</a><h1>${esc(c.player)}</h1><h2>${esc(c.card)}</h2>
+ <dl><dt>${t('season')}</dt><dd>${esc(c.season)||'-'}</dd><dt>${t('team')}</dt><dd>${esc(c.team)||'-'}</dd><dt>${t('type')}</dt><dd>${t(c.type)}</dd><dt>${t('rarity')}</dt><dd>${esc(c.rarity)||'-'}</dd></dl>
+ ${c.note?`<p class="note">${esc(c.note)}</p>`:''}
+ <div class="pn"><a href="${lk(p)}">← ${esc(p.player)}</a><a href="${lk(n)}">${esc(n.player)} →</a></div></div></section>`;
+ const fl=$('#flip'),flip=()=>fl.classList.toggle('b');
+ $('#fl').onclick=flip;
+ $('#zm').onclick=fl.onclick=()=>openLB(c,fl.classList.contains('b')?1:0);
+ fl.onkeydown=e=>{if(e.key=='Enter'||e.key==' '){e.preventDefault();fl.onclick()}};
+}
+
+/* ===== PHÓNG TO ===== */
+let cur=null;
+function openLB(c,s){cur=c;$('#lb').classList.add('on');$('#lbc').innerHTML=`<button data-s="0">${t('front')}</button><button data-s="1">${t('bk')}</button><button data-s="x">${t('close')}</button>`;showLB(s)}
+function showLB(s){$('#lbi').src=s?cur.back:cur.front;document.querySelectorAll('#lbc button[data-s]').forEach(b=>b.classList.toggle('on',b.dataset.s==s))}
+function closeLB(){$('#lb').classList.remove('on')}
+$('#lb').onclick=e=>{const b=e.target.closest('button');if(b){b.dataset.s=='x'?closeLB():showLB(+b.dataset.s)}else if(e.target.id!='lbi')closeLB()};
+document.addEventListener('keydown',e=>{if(e.key=='Escape')closeLB()});
+
+/* ===== ĐIỀU HƯỚNG & HIỆU ỨNG ĐÈN RỌI ===== */
+function route(){const m=location.hash.match(/^#\/card\/(.+)$/);m?detail(decodeURIComponent(m[1])):home();scrollTo(0,0)}
+addEventListener('hashchange',route);
+addEventListener('mousemove',e=>{document.documentElement.style.setProperty('--mx',e.clientX+'px');document.documentElement.style.setProperty('--my',e.clientY+'px')},{passive:true});
+chrome();
+load().then(route);
+</script>
+</body>
+</html>
