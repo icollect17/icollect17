@@ -76,7 +76,7 @@ footer a{color:var(--bone);text-decoration:none;border-bottom:1px solid var(--br
 .lbc{display:flex;gap:10px}
 .lbc button{background:#1b1214;color:var(--bone);border:1px solid var(--brass);padding:9px 16px;border-radius:6px;font:600 13px Manrope,sans-serif;cursor:pointer}
 .lbc button.on{background:var(--brass);color:#241705}
-@media(max-width:760px){.detail{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr);gap:34px 14px}.sep{display:none}}
+.hero.sm{padding:6vh 0 3vh}.hero.sm h1{font-size:clamp(34px,6vw,64px)}.hero.sm .back{display:inline-block;margin-bottom:14px} .folders{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:56px 40px} .folder{text-decoration:none;display:block;padding-right:34px} .stack{position:relative;aspect-ratio:5/7} .stack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px;border:6px solid #2a1c1f;outline:1px solid var(--brass);outline-offset:-3px;background:#000;box-shadow:0 18px 30px -10px rgba(0,0,0,.85);transform:translate(calc(var(--i)*13px),calc(var(--i)*-7px)) rotate(calc(var(--i)*3deg));transition:transform .45s cubic-bezier(.3,.7,.2,1)} .folder:hover .stack img{transform:translate(calc(var(--i)*28px),calc(var(--i)*-12px)) rotate(calc(var(--i)*6deg))} .folder .plaque{width:100%;margin-top:22px;padding:12px 14px}.folder .plaque b{font-size:20px} @media(max-width:760px){.detail{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr);gap:34px 14px}.sep{display:none}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -103,9 +103,9 @@ const CONFIG={
 
 /* ===== ĐA NGÔN NGỮ ===== */
 const T={
-vi:{h1:'iCollect17',sub:'Mỗi tấm thẻ là một khoảnh khắc được giữ lại.',search:'Tìm cầu thủ, tên thẻ, mùa giải…',all:'Tất cả',Club:'CLB',NT:'Đội tuyển QG',player:'Cầu thủ',season:'Mùa giải',rarity:'Độ hiếm',team:'Đội / CLB',type:'Loại',count:'Đang hiển thị {n} trong {m} thẻ',none:'Không có thẻ nào khớp. Hãy thử bỏ bớt bộ lọc.',flip:'Lật thẻ',zoom:'Phóng to',back:'Quay lại triển lãm',front:'Mặt trước',bk:'Mặt sau',contact:'Liên hệ',sample:'Đang hiển thị dữ liệu mẫu. Điền SHEET_ID trong CONFIG để dùng dữ liệu thật.',close:'Đóng'},
-en:{h1:'iCollect17',sub:'My personal collection of player cards, each one a moment kept.',search:'Search player, card, season…',all:'All',Club:'Club',NT:'National team',player:'Player',season:'Season',rarity:'Rarity',team:'Team',type:'Type',count:'Showing {n} of {m} cards',none:'No cards match. Try removing a filter.',flip:'Flip card',zoom:'Zoom in',back:'Back to the exhibition',front:'Front',bk:'Back',contact:'Contact',sample:'Showing sample data. Set SHEET_ID in CONFIG to load your real collection.',close:'Close'},
-de:{h1:'iCollect17',sub:'Meine persönliche Sammlung von Spielerkarten, jede Karte ein festgehaltener Moment.',search:'Spieler, Karte, Saison suchen…',all:'Alle',Club:'Verein',NT:'Nationalmannschaft',player:'Spieler',season:'Saison',rarity:'Seltenheit',team:'Team',type:'Art',count:'{n} von {m} Karten',none:'Keine passende Karte gefunden. Entferne einen Filter.',flip:'Karte drehen',zoom:'Vergrößern',back:'Zurück zur Ausstellung',front:'Vorderseite',bk:'Rückseite',contact:'Kontakt',sample:'Beispieldaten werden angezeigt. Trage SHEET_ID in CONFIG ein, um die echte Sammlung zu laden.',close:'Schließen'}
+vi:{h1:'iCollect17',sub:'Mỗi tấm thẻ là một khoảnh khắc được giữ lại.',search:'Tìm cầu thủ, tên thẻ, mùa giải…',all:'Tất cả',Club:'CLB',NT:'Đội tuyển QG',player:'Cầu thủ',season:'Mùa giải',rarity:'Độ hiếm',team:'Đội / CLB',type:'Loại',count:'Đang hiển thị {n} trong {m} thẻ',none:'Không có thẻ nào khớp. Hãy thử bỏ bớt bộ lọc.',flip:'Lật thẻ',zoom:'Phóng to',back:'Quay lại triển lãm',front:'Mặt trước',bk:'Mặt sau',contact:'Liên hệ',sample:'Đang hiển thị dữ liệu mẫu. Điền SHEET_ID trong CONFIG để dùng dữ liệu thật.',close:'Đóng',allp:'Tất cả cầu thủ',cards:'{n} thẻ',countP:'Đang hiển thị {n} trong {m} cầu thủ',searchP:'Tìm cầu thủ…'},
+en:{h1:'iCollect17',sub:'My personal collection of player cards, each one a moment kept.',search:'Search player, card, season…',all:'All',Club:'Club',NT:'National team',player:'Player',season:'Season',rarity:'Rarity',team:'Team',type:'Type',count:'Showing {n} of {m} cards',none:'No cards match. Try removing a filter.',flip:'Flip card',zoom:'Zoom in',back:'Back to the exhibition',front:'Front',bk:'Back',contact:'Contact',sample:'Showing sample data. Set SHEET_ID in CONFIG to load your real collection.',close:'Close',allp:'All players',cards:'{n} cards',countP:'Showing {n} of {m} players',searchP:'Search players…'},
+de:{h1:'iCollect17',sub:'Meine persönliche Sammlung von Spielerkarten, jede Karte ein festgehaltener Moment.',search:'Spieler, Karte, Saison suchen…',all:'Alle',Club:'Verein',NT:'Nationalmannschaft',player:'Spieler',season:'Saison',rarity:'Seltenheit',team:'Team',type:'Art',count:'{n} von {m} Karten',none:'Keine passende Karte gefunden. Entferne einen Filter.',flip:'Karte drehen',zoom:'Vergrößern',back:'Zurück zur Ausstellung',front:'Vorderseite',bk:'Rückseite',contact:'Kontakt',sample:'Beispieldaten werden angezeigt. Trage SHEET_ID in CONFIG ein, um die echte Sammlung zu laden.',close:'Schließen',allp:'Alle Spieler',cards:'{n} Karten',countP:'{n} von {m} Spielern',searchP:'Spieler suchen…'}
 };
 let L='vi',D=[],sample=false,F={q:'',type:'',player:'',season:'',rarity:''};
 try{L=localStorage.getItem('lang')||'vi'}catch(e){}
@@ -159,7 +159,7 @@ function chrome(){
 $('#hd').onclick=e=>{const b=e.target.closest('button[data-l]');if(!b)return;L=b.dataset.l;try{localStorage.setItem('lang',L)}catch(x){}chrome();route()};
 
 /* ===== TRANG CHỦ ===== */
-function home(){
+function homeOld(){
  document.title="iCollect's Exhibition";
  const u=k=>[...new Set(D.map(c=>c[k]))].filter(Boolean).sort();
  const sel=(k)=>`<select data-k="${k}" aria-label="${t(k)}"><option value="">${t(k)}</option>${u(k).map(v=>`<option${F[k]==v?' selected':''}>${esc(v)}</option>`).join('')}</select>`;
@@ -176,7 +176,38 @@ function home(){
  g.onmouseout=e=>{const a=e.target.closest('.card');if(a&&!a.contains(e.relatedTarget)){a.style.setProperty('--rx','0deg');a.style.setProperty('--ry','0deg')}};
  grid();
 }
-function grid(){
+function home(){
+ document.title="iCollect's Exhibition";F={q:'',type:'',season:'',rarity:'',player:''};
+ $('#app').innerHTML=`<section class="hero"><h1>${t('h1')}</h1><p>${t('sub')}</p><div class="stripe"></div>${sample?`<p class="banner">${t('sample')}</p>`:''}</section>
+ <div class="bar"><input id="q" type="search" placeholder="${t('searchP')}" aria-label="${t('searchP')}"></div><p id="cnt" class="cnt"></p><div id="grid" class="grid folders"></div>`;
+ $('#q').oninput=e=>{F.q=e.target.value;folders()};
+ folders();
+}
+function folders(){
+ const q=fold(F.q),m=new Map();
+ D.forEach(c=>{if(!m.has(c.player))m.set(c.player,[]);m.get(c.player).push(c)});
+ const r=[...m].filter(([p,l])=>!q||fold(p+' '+l.map(c=>[c.card,c.season,c.team,c.rarity].join(' ')).join(' ')).includes(q)).sort((a,b)=>a[0].localeCompare(b[0]));
+ $('#cnt').textContent=t('countP').replace('{n}',r.length).replace('{m}',m.size);
+ $('#grid').innerHTML=r.length?r.map(([p,l])=>`<a class="folder" href="#/player/${encodeURIComponent(p)}"><div class="stack">${l.slice(0,3).map((c,i)=>`<img loading="lazy" src="${c.front}" alt="" style="--i:${i}">`).reverse().join('')}</div><div class="plaque"><b>${esc(p)}</b><span>${t('cards').replace('{n}',l.length)}</span></div></a>`).join(''):`<p class="none">${t('none')}</p>`;
+}
+function player(name){
+ const l=D.filter(c=>c.player==name);if(!l.length){location.hash='#/';return}
+ document.title=`${name} - iCollect's Exhibition`;F={q:'',type:'',season:'',rarity:'',player:name};
+ const u=k=>[...new Set(l.map(c=>c[k]))].filter(Boolean).sort();
+ const sel=k=>`<select data-k="${k}" aria-label="${t(k)}"><option value="">${t(k)}</option>${u(k).map(v=>`<option>${esc(v)}</option>`).join('')}</select>`;
+ $('#app').innerHTML=`<section class="hero sm"><a class="back" href="#/">← ${t('allp')}</a><h1>${esc(name)}</h1><p>${t('cards').replace('{n}',l.length)}</p><div class="stripe"></div></section>
+ <div class="bar"><input id="q" type="search" placeholder="${t('search')}" aria-label="${t('search')}">
+ <div>${['','Club','NT'].map(v=>`<button class="chip${v==''?' on':''}" data-t="${v}">${t(v||'all')}</button>`).join(' ')}</div>${sel('season')}${sel('rarity')}</div><p id="cnt" class="cnt"></p><div id="grid" class="grid"></div>`;
+ $('#q').oninput=e=>{F.q=e.target.value;grid()};
+ document.querySelectorAll('.bar select').forEach(s=>s.onchange=e=>{F[s.dataset.k]=e.target.value;grid()});
+ document.querySelectorAll('.chip').forEach(b=>b.onclick=()=>{F.type=b.dataset.t;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x==b));grid()});
+ const g=$('#grid');
+ g.onmousemove=e=>{const a=e.target.closest('.card');if(!a)return;const b=a.querySelector('.art').getBoundingClientRect();
+  a.style.setProperty('--ry',((e.clientX-b.left)/b.width-.5)*14+'deg');a.style.setProperty('--rx',-((e.clientY-b.top)/b.height-.5)*14+'deg')};
+ g.onmouseout=e=>{const a=e.target.closest('.card');if(a&&!a.contains(e.relatedTarget)){a.style.setProperty('--rx','0deg');a.style.setProperty('--ry','0deg')}};
+ grid();
+}
+ function grid(){
  const q=fold(F.q);
  const r=D.filter(c=>(!F.type||c.type==F.type)&&(!F.player||c.player==F.player)&&(!F.season||c.season==F.season)&&(!F.rarity||c.rarity==F.rarity)&&(!q||fold([c.player,c.card,c.season,c.team,c.rarity].join(' ')).includes(q)));
  $('#cnt').textContent=t('count').replace('{n}',r.length).replace('{m}',D.length);
@@ -186,14 +217,14 @@ function grid(){
 /* ===== TRANG CHI TIẾT ===== */
 function detail(id){
  const i=D.findIndex(c=>c.id==id);if(i<0){location.hash='#/';return}
- const c=D[i],p=D[(i-1+D.length)%D.length],n=D[(i+1)%D.length],lk=x=>'#/card/'+encodeURIComponent(x.id);
+ const c=D[i],l=D.filter(x=>x.player==c.player),j=l.indexOf(c),p=l[(j-1+l.length)%l.length],n=l[(j+1)%l.length],lk=x=>'#/card/'+encodeURIComponent(x.id);
  document.title=`${c.player}: ${c.card} - iCollect's Exhibition`;
  $('#app').innerHTML=`<section class="detail"><div class="stage"><div class="flip" id="flip" tabindex="0" role="button" aria-label="${t('zoom')}"><img class="face" src="${c.front}" alt="${t('front')}"><img class="face bk" src="${c.back}" alt="${t('bk')}"></div>
  <div class="ctl"><button id="fl">${t('flip')}</button><button id="zm">${t('zoom')}</button></div></div>
- <div class="info"><a class="back" href="#/">← ${t('back')}</a><h1>${esc(c.player)}</h1><h2>${esc(c.card)}</h2>
+ <div class="info"><a class="back" href="#/player/${encodeURIComponent(c.player)}">← ${esc(c.player)}</a><h1>${esc(c.player)}</h1><h2>${esc(c.card)}</h2>
  <dl><dt>${t('season')}</dt><dd>${esc(c.season)||'-'}</dd><dt>${t('team')}</dt><dd>${esc(c.team)||'-'}</dd><dt>${t('type')}</dt><dd>${t(c.type)}</dd><dt>${t('rarity')}</dt><dd>${esc(c.rarity)||'-'}</dd></dl>
  ${c.note?`<p class="note">${esc(c.note)}</p>`:''}
- <div class="pn"><a href="${lk(p)}">← ${esc(p.player)}</a><a href="${lk(n)}">${esc(n.player)} →</a></div></div></section>`;
+ ${l.length>1?`<div class="pn"><a href="${lk(p)}">← ${esc(p.card)}</a><a href="${lk(n)}">${esc(n.card)} →</a></div>`:''}</div></section>`;
  const fl=$('#flip'),flip=()=>fl.classList.toggle('b');
  $('#fl').onclick=flip;
  $('#zm').onclick=fl.onclick=()=>openLB(c,fl.classList.contains('b')?1:0);
@@ -209,7 +240,7 @@ $('#lb').onclick=e=>{const b=e.target.closest('button');if(b){b.dataset.s=='x'?c
 document.addEventListener('keydown',e=>{if(e.key=='Escape')closeLB()});
 
 /* ===== ĐIỀU HƯỚNG & HIỆU ỨNG ĐÈN RỌI ===== */
-function route(){const m=location.hash.match(/^#\/card\/(.+)$/);m?detail(decodeURIComponent(m[1])):home();scrollTo(0,0)}
+function route(){const h=location.hash;let m;  if(m=h.match(/^#\/card\/(.+)$/))detail(decodeURIComponent(m[1]));  else if(m=h.match(/^#\/player\/(.+)$/))player(decodeURIComponent(m[1]));  else home();  scrollTo(0,0)}
 addEventListener('hashchange',route);
 addEventListener('mousemove',e=>{document.documentElement.style.setProperty('--mx',e.clientX+'px');document.documentElement.style.setProperty('--my',e.clientY+'px')},{passive:true});
 chrome();
